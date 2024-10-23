@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv
+venv/
+venv.bak/
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# Other common files
+.DS_Store
+*.egg-info/
