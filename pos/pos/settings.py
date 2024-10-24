@@ -74,13 +74,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pos.wsgi.application'
 
 CSRF_TRUSTED_ORIGINS = [
-        'https://asv2vmfm-fadu1pop-llqyeh1v0lg0.ac3-preview.marscode.dev'
+        'https://izqatn5j-l4zv1kot-ayoqc0ecx5sg.ac3-preview.marscode.dev'
 ]
 ALLOWED_HOSTS = [
 
-        "https://asv2vmfm-fadu1pop-llqyeh1v0lg0.ac3-preview.marscode.dev", 
+        "https://izqatn5j-l4zv1kot-ayoqc0ecx5sg.ac3-preview.marscode.dev", 
         # with no https
-        "asv2vmfm-fadu1pop-llqyeh1v0lg0.ac3-preview.marscode.dev"
+        "izqatn5j-l4zv1kot-ayoqc0ecx5sg.ac3-preview.marscode.dev"
 ]
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

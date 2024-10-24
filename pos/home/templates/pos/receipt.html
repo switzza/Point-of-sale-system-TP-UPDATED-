@@ -1,4 +1,4 @@
-<!-- pos/templates/pos/receipt.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,28 +7,35 @@
     <title>Receipt</title>
     <style>
         body {
-            background-color: #b2692d;
+            background: linear-gradient(to bottom, #b2692d, #e3b193);
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
+        }
+        .header {
+            background: url("{% static 'path/to/your/header-bg.png' %}") no-repeat center center;
+            background-size: cover;
+            width: 100%;
+            height: 150px; /* Adjust height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
         }
         .container {
             background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            width: 350px; /* Increased width for better layout */
             padding: 20px;
             text-align: center;
-        }
-        .receipt-header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
         }
         .receipt-body {
             margin-top: 20px;
@@ -39,11 +46,14 @@
         .receipt-body p {
             margin: 10px 0;
         }
-        .of {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 30px;
-            color: #333;
+        .receipt-body hr {
+            border: 1px solid #b2692d; /* Same color as background */
+            margin: 15px 0;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
         }
         .total {
             font-weight: bold;
@@ -63,35 +73,61 @@
         button:hover {
             background-color: #218838;
         }
+        .thank-you {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+        .footer {
+            background: url("{% static 'path/to/your/footer-bg.png' %}") no-repeat center center;
+            background-size: cover;
+            width: 100%;
+            height: 50px; /* Adjust height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            margin-top: auto; /* Push to the bottom */
+        }
     </style>
 </head>
 <body>
+    <div class="header">
+        Transaction Receipt
+    </div>
     <div class="container">
-        <div class="receipt-header">Transaction Receipt</div>
         <div class="receipt-body">
-            <p><strong>Product Name:</strong> {{ product_name }}</p>
-            <p><strong>Quantity:</strong> {{ quantity }}</p>
-            <p><strong>Price per Unit:</strong> ₱{{ price }}</p>
-            <p class="total"><strong>Total Amount:</strong> ₱{{ total_amount }}</p>
-        </div>
-        <div class="of"> Receipt
-            <p>---------------------------------</p>
-         </div>
-        <div>
-            
-            <p>Product Name: {{ product_name }}</p>
-            <p>Quantity: {{ quantity }}</p>
-            <p>Price per Unit: {{ price }}</p>
-            <p>Subtotal: {{ subtotal }}</p>
-            <p>VAT (12%): {{ vat }}</p>
-            <h2>Total Amount: ₱{{ total_amount }}</h2>
-            <p>Thank you for shopping with us.</p> 
-        </div>
-        
+            <p><strong>Transaction ID:</strong> 4256925955</p>
+            <p><strong>Date:</strong> 10/26/24 </p>
+            <hr>
+            <p><strong>Products:</strong></p>
+            {% for item in items %}
+                <div class="item">
+                    <span>{{ item.product_name }}</span>
+                    <span>₱{{ item.price }} x {{ item.quantity }}</span>
 
-        <!-- <button onclick="window.location.href='/'">Back to POS</button> -->
-
+                </div>
+            {% endfor %}
+            <hr>
+            <div class="item">
+                <span><strong>Subtotal:</strong></span>
+                <span>₱{{ subtotal }}</span>
+            </div>
+            <div class="item">
+                <span><strong>VAT (12%):</strong></span>
+                <span>₱{{ vat }}</span>
+            </div>
+            <div class="item total">
+                <span><strong>Total Amount:</strong></span>
+                <span>₱{{ total_amount }}</span>
+            </div>
+        </div>
+        <p class="thank-you">Thank you for shopping with us.</p>
         <button onclick="window.location.href='/'">Back to POS</button>
+    </div>
+    <div class="footer">
+        ReboredoPOS | Sta. Maria, Poblacion | 0958 948 9284
     </div>
 </body>
 </html>

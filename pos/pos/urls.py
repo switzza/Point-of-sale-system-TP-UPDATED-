@@ -17,10 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home import views
-from home.views import pos_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Route to the Django admin
-    path('', views.home, name='home'), 
-    path('', pos_view, name='pos'), # Route to the home page (POS system)
+    path('', views.home, name='home'),  # Route to the POS system
 ]
