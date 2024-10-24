@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Start Application",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "pos/manage.py",
+      "args": [
+          "runserver",
+          "0.0.0.0:8080"
+      ],
+      "console": "internalConsole",
+      "justMyCode": true
+  }
+  ]
+}

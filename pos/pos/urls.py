@@ -15,10 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path
 from home import views
+from home.views import pos_view
 
 urlpatterns = [
-    re_path(r'^admin/', admin.site.urls),
-    re_path(r'^', views.home),
+    path('admin/', admin.site.urls),  # Route to the Django admin
+    path('', views.home, name='home'), 
+    path('', pos_view, name='pos'), # Route to the home page (POS system)
 ]
