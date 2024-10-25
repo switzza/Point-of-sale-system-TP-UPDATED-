@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receipt</title>
+    <title>MarketHub - Receipt</title>
     <style>
         body {
             background: linear-gradient(to bottom, #b2692d, #e3b193);
@@ -28,54 +28,69 @@
             color: white;
             font-size: 28px;
             font-weight: bold;
+            margin-bottom: 20px; /* Spacing below the header */
         }
         .container {
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-            width: 350px; /* Increased width for better layout */
-            padding: 20px;
+            width: 350px; /* Reduced width for better fit */
+            padding: 15px; /* Reduced padding */
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align items */
+        }
+        .sidebar {
+            background-color: #fff; /* Light background for the sidebar */
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            width: 250px; /* Fixed width for sidebar */
+            padding: 20px;
+            margin: 20px; /* Margin for spacing */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto; /* Adjust height automatically based on content */
+        }
+        .sidebar h3 {
+            font-size: 22px;
+            color: #b2692d; /* Match the header color */
+            margin-bottom: 15px;
+        }
+        .sidebar p {
+            text-align: center;
+            color: #555;
+            font-size: 16px;
         }
         .receipt-body {
-            margin-top: 20px;
+            margin-top: 10px; /* Reduced margin */
             text-align: left;
-            font-size: 18px;
+            font-size: 16px; /* Slightly reduced font size */
             color: #555;
+            width: 100%; /* Full width to utilize space */
         }
         .receipt-body p {
-            margin: 10px 0;
+            margin: 8px 0; /* Reduced margin */
         }
         .receipt-body hr {
             border: 1px solid #b2692d; /* Same color as background */
-            margin: 15px 0;
+            margin: 10px 0; /* Reduced margin */
         }
         .item {
             display: flex;
             justify-content: space-between;
-            margin: 5px 0;
+            margin: 4px 0; /* Reduced margin */
         }
         .total {
             font-weight: bold;
             color: #000;
-            font-size: 20px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #28a745;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
+            font-size: 18px; /* Slightly reduced font size */
         }
         .thank-you {
-            margin-top: 20px;
-            font-size: 16px;
+            margin-top: 10px; /* Reduced margin */
+            font-size: 14px; /* Slightly reduced font size */
             color: #555;
         }
         .footer {
@@ -90,23 +105,36 @@
             font-size: 14px;
             margin-top: auto; /* Push to the bottom */
         }
+        button {
+            margin-top: 15px; /* Reduced margin */
+            padding: 8px 16px; /* Reduced padding */
+            background-color: #28a745;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 14px; /* Reduced font size */
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         Transaction Receipt
     </div>
+    
     <div class="container">
         <div class="receipt-body">
             <p><strong>Transaction ID:</strong> 4256925955</p>
-            <p><strong>Date:</strong> 10/26/24 </p>
+            <p><strong>Date:</strong> 10/26/24</p>
             <hr>
             <p><strong>Products:</strong></p>
             {% for item in items %}
                 <div class="item">
                     <span>{{ item.product_name }}</span>
                     <span>₱{{ item.price }} x {{ item.quantity }}</span>
-
                 </div>
             {% endfor %}
             <hr>
@@ -123,9 +151,17 @@
                 <span>₱{{ total_amount }}</span>
             </div>
         </div>
-        <p class="thank-you">Thank you for shopping with us.</p>
-        <button onclick="window.location.href='/'">Back to POS</button>
+        <p class="thank-you">Thank you for shopping with us. 😊</p>
+        <p class="thank-you">www.marketHub.com</p>
+        <button onclick="window.location.href='/'">Back to Grocery</button>
     </div>
+
+    <div class="sidebar">
+        <h3>FRESH GOODS HERE AT MarketHub!</h3>
+        <p>Discover our wide range of fresh fruits, vegetables, and organic products.</p>
+        <p>Your health and satisfaction are our top priorities! 🛒</p>
+    </div>
+
     <div class="footer">
         ReboredoPOS | Sta. Maria, Poblacion | 0958 948 9284
     </div>
